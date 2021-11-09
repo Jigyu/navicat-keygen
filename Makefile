@@ -1,13 +1,13 @@
 CC = g++
-OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl@1.1/include
-OPENSSL_LIB_PATH = /usr/local/opt/openssl@1.1/lib
-CAPSTONE_INCLUDE_PATH = 
-CAPSTONE_LIB_PATH = 
-KEYSTONE_INCLUDE_PATH = 
-KEYSTONE_LIB_PATH = 
-RAPIDJSON_INCLUDE_PATH = 
-LIBPLIST_INCLUDE_PATH = 
-LIBPLIST_LIB_PATH = 
+OPENSSL_INCLUDE_PATH = /opt/homebrew/opt/openssl@1.1/include
+OPENSSL_LIB_PATH = /opt/homebrew/opt/openssl@1.1/lib
+CAPSTONE_INCLUDE_PATH = /opt/homebrew/opt/capstone/include
+CAPSTONE_LIB_PATH =  /opt/homebrew/opt/capstone/lib
+KEYSTONE_INCLUDE_PATH = /opt/homebrew/opt/keystone/include
+KEYSTONE_LIB_PATH = /opt/homebrew/opt/keystone/lib
+RAPIDJSON_INCLUDE_PATH = /opt/homebrew/opt/rapidjson/include
+LIBPLIST_INCLUDE_PATH = /opt/homebrew/Cellar/libplist/2.2.0/include
+LIBPLIST_LIB_PATH = /opt/homebrew/Cellar/libplist/2.2.0/lib
 
 OUTPUT_DIR = ./bin/
 COMMON_DIR = ./common/
@@ -70,7 +70,7 @@ patcher: $(PATCHER_HEADER) $(PATCHER_SOURCE)
 $(if $(CAPSTONE_INCLUDE_PATH),-I$(CAPSTONE_INCLUDE_PATH),) $(if $(CAPSTONE_LIB_PATH),-L$(CAPSTONE_LIB_PATH),) \
 $(if $(KEYSTONE_INCLUDE_PATH),-I$(KEYSTONE_INCLUDE_PATH),) $(if $(KEYSTONE_LIB_PATH),-L$(KEYSTONE_LIB_PATH),) \
 $(if $(LIBPLIST_INCLUDE_PATH),-I$(LIBPLIST_INCLUDE_PATH),) $(if $(LIBPLIST_LIB_PATH),-L$(LIBPLIST_LIB_PATH),) \
-$(PATCHER_SOURCE) -o $(PATCHER_BINARY) -lcrypto -lcapstone -lkeystone -lplist++
+$(PATCHER_SOURCE) -o $(PATCHER_BINARY) -lcrypto -lcapstone -lkeystone -lplist++-2.0
 	@echo
 
 keygen: $(KEYGEM_HEADER) $(KEYGEN_SOURCE)
